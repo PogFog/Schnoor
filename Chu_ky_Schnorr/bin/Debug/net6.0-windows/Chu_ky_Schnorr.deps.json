@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "Chu_ky_Schnorr/1.0.0": {
+        "runtime": {
+          "Chu_ky_Schnorr.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Chu_ky_Schnorr/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

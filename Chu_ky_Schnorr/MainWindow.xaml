@@ -1,0 +1,109 @@
+﻿<Window x:Class="Chu_ky_Schnorr.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Chu_ky_Schnorr"
+        mc:Ignorable="d"
+        Title="Chữ kí Schnorr" Height="680" Width="1200" FontSize="14">
+    <Grid>
+        <Grid.Resources>
+            <Style TargetType="TextBox">
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="FontFamily" Value="Times New Roman"/>
+                <Setter Property="FontWeight" Value="Normal"/>
+                <Setter Property="Padding" Value="6"/>
+                <Setter Property="VerticalAlignment" Value="Top"/>
+                <Setter Property="HorizontalAlignment" Value="Left"/>
+            </Style>
+            <Style TargetType="Button">
+                <Setter Property="Width" Value="Auto"/>
+                <Setter Property="Height" Value="Auto"/>
+                <Setter Property="Padding" Value="10,6"/>
+                <Setter Property="VerticalAlignment" Value="Top"/>
+                <Setter Property="HorizontalAlignment" Value="Left"/>
+                <Setter  Property="Cursor" Value="Hand"/>
+                <Setter Property="Background" Value="Orchid"/>
+                <Setter Property="BorderThickness" Value="0"/>
+            </Style>
+            <Style TargetType="Label">
+                <Setter Property="FontWeight" Value="Normal"/>
+                <Setter Property="VerticalAlignment" Value="Top"/>
+                <Setter Property="HorizontalAlignment" Value="Left"/>
+            </Style>
+            <Style TargetType="GroupBox">
+                <Setter Property="VerticalAlignment" Value="Top"/>
+                <Setter Property="HorizontalAlignment" Value="Left"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+            </Style>
+        </Grid.Resources>
+        <GroupBox Header="TẠO KHÓA" FontWeight="Bold" Height="620" Width="365" Margin="5" Foreground="blue">
+            <Grid>
+                <GroupBox Header="CHỌN SỐ NGUYÊN TỐ" Height="140" Width="330" Margin="10">
+                    <Grid>
+                        <Label Content="q" Margin="24,15,0,0"/>
+                        <TextBox Name="txtQ" Margin="50,15,0,0" Width="240"></TextBox>
+                        <Label Content="p" Margin="24,60,0,0"/>
+                        <TextBox Name="txtP" Margin="50,60,0,0" Width="240"></TextBox>
+                    </Grid>
+                </GroupBox>
+                <GroupBox Header="CHỌN SỐ NGUYÊN" Height="100" Width="330" Margin="10,170,0,0">
+                    <Grid>
+                        <Label Content="g" Margin="24,0,0,0" VerticalAlignment="Center"/>
+                        <TextBox Name="txtG" Margin="50,0,0,0" Width="240" VerticalAlignment="Center"/>
+                    </Grid>
+                </GroupBox>
+                <GroupBox Header="KHÓA BÍ MẬT" Height="100" Width="330" Margin="10,290,0,0">
+                    <Grid>
+                        <Label Content="x" Margin="24,0,0,0" VerticalAlignment="Center"/>
+                        <TextBox Name="txtX" Margin="50,0,0,0" Width="240" VerticalAlignment="Center"/>
+                    </Grid>
+                </GroupBox>
+                <GroupBox Header="KHÓA CÔNG KHAI" Height="100" Width="330" Margin="10,410,0,0">
+                    <Grid>
+                        <Label Content="y" Margin="24,0,0,0" VerticalAlignment="Center"/>
+                        <TextBox Name="txtY" Margin="50,0,0,0" Width="240" VerticalAlignment="Center" IsReadOnly="True" GotFocus="txtY_GotFocus"/>
+                    </Grid>
+                </GroupBox>
+                <Button Name="btnKhoaThuCong" Content="Thủ công" Margin="20,0,0,10" VerticalAlignment="Bottom" Click="btnKhoaThuCong_Click"/>
+                <Button Name="btnKhoaNgauNhien" Content="Ngẫu nhiên" VerticalAlignment="Bottom" Margin="130,0,0,10" Click="btnKhoaNgauNhien_Click"/>
+                <Button Name="btnXoatrango" Content="Làm mới" VerticalAlignment="Bottom" Margin="255,0,0,10" Click="btnXoatrango_Click"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="KÝ VĂN BẢN" Height="620" Width="790" Margin="380,5,0,0" Foreground="Red">
+            <Grid>
+                <Label Content="Số ngẫu nhiên k" Margin="10,10,0,0"/>
+                <TextBox Name="txtK" Margin="130,10,0,0" Width="545"/>
+                <Button Name="btnChonK" Content="Chọn k" Margin="690,10,0,0" Width="80" Click="btnChonK_Click"/>
+                <Label Content="Văn bản cần ký" Margin="10,55,0,0" FontWeight="Normal"/>
+                <TextBox Name="txtVanBan" Margin="130,55,0,0" Width="545" TextWrapping="NoWrap"/>
+                <Label Content="Giá trị băm" Margin="10,100,0,0" FontWeight="Normal"/>
+                <TextBox Name="txtHashText" Margin="130,100,0,0" Width="545" TextWrapping="NoWrap" IsReadOnly="True"/>
+                <Button Name="btnChonFile" Content="Chọn file" Margin="690,55,0,0" Click="btnChonFile_Click"/>
+                <GroupBox Header="CHỮ KÝ" Margin="10,140,0,0" Width="760" Height="170">
+                    <Grid>
+                        <Label Content="r" Margin="5,10,0,0"/>
+                        <TextBox Name="txtR" Margin="30,10,0,0" Width="700" IsEnabled="False"/>
+                        <Label Content="s" Margin="5,55,0,0"/>
+                        <TextBox Name="txtS" Margin="30,55,0,0" Width="700" IsEnabled="False"/>
+                        <Button Name="btnTaoChuKy" Content="Tạo chữ ký" Margin="0,105,115,0" HorizontalAlignment="Center" Click="btnTaoChuKy_Click"/>
+                        <Button Name="btnKyVanBan" Content="Ký văn bản" Margin="115,105,0,0" HorizontalAlignment="Center" Click="btnKyVanBan_Click"/>
+                    </Grid>
+                </GroupBox>
+                <GroupBox Header="KIỂM TRA CHỮ KÝ" Margin="10,320,0,0" Width="760" Height="215">
+                    <Grid>
+                        <Label Content="Chọn file kiểm tra" Margin="5,0,0,0"/>
+                        <TextBox Name="txtFileKtra" Margin="10,30,0,0" Width="635"/>
+                        <Label Content="Chọn file chữ ký" Margin="5,60,0,0"/>
+                        <TextBox Name="txtFileChuky" Margin="10,90,0,0" Width="635"/>
+                        <Button Name="btnFileKtra" Content="Chọn file" Margin="660,30,0,0" Click="btnFileKtra_Click"/>
+                        <Button Name="btnFileChuKy" Content="Chọn file" Margin="660,90,0,0" Click="btnFileChuKy_Click"/>
+                        <Label Content="Khóa công khai y" Margin="5,145,0,0"/>
+                        <TextBox Name="txtYInput" Margin="130,145,0,0" Width="515"/>
+                    </Grid>
+                </GroupBox>
+                <Button Name="btnKtraChuKy" Content="Kiểm tra chữ ký" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,10" Click="btnKtraChuKy_Click"/>
+            </Grid>
+        </GroupBox>
+    </Grid>
+</Window>
